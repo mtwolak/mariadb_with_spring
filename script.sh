@@ -1,2 +1,2 @@
 gradle build -p spring/
-docker-compose up
+docker-compose up -d
