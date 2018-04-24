@@ -1,0 +1,36 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mariadb
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mariadb
+        tier: backend
+    spec:
+      containers:
+        -  name: mariadb
+           image: mtwolak/maria-sep
+           imagePullPolicy: IfNotPresent
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: spring
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring
+        tier: backend
+    spec:
+      containers:
+        - name: spring
+          image: mtwolak/spring
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080

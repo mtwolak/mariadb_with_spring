@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring
+  labels:
+    app: spring
+    tier: backend
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+  selector:
+    app: spring
+    tier: backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+    tier: backend
+spec:
+  type: NodePort
+  ports:
+    - port: 3306
+  selector:
+    app: mariadb
+    tier: backend
